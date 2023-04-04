@@ -15,6 +15,7 @@ createDate!:Date;
 //le nombre de likes
 snaps!:number;
 imageUrl!:string;
+buttonText!:string;
 
 //C'est ici qu'on initialise les propriétés
 //On prépare les données
@@ -23,6 +24,21 @@ this.title="Archibald";
 this.description="Mon meilleur ami depuis tout petit !";
 this.createDate= new Date();
 this.snaps=6;
-this.imageUrl='https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg'
+this.imageUrl='https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg';
+this.buttonText='Oh Snap!!';
 }
+
+onSnap(){
+if(this.buttonText==='Oh Snap!!'){
+  //L'utilisateur n'a pas encore cliqué sur le bouton
+  this.snaps++;
+  this.buttonText='Oups! unSnap!!';
+}
+else{
+  // Si on est déjà sur unSnap
+  this.snaps--;
+  this.buttonText='Oh Snap!!';
+}
+}
+
 }
