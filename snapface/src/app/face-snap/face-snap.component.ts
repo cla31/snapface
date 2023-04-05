@@ -21,7 +21,7 @@ onSnap(){
 if(this.buttonText==='Oh Snap!!'){
   //L'utilisateur n'a pas encore cliqué sur le bouton
   this.faceSnap.snaps++;
-  this.buttonText='Oups! unSnap!!';
+  this.buttonText='Oops, unSnap!';
 }
 else{
   // Si on est déjà sur unSnap
