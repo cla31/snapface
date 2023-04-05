@@ -8,5 +8,9 @@
     <!-- <p *ngIf="faceSnap.location">Photo prise à {{faceSnap.location}}</p> -->
     <!-- Filtre pour les photos prises à Paris: -->
     <p *ngIf="faceSnap.location==='Paris'">Photo prise à {{faceSnap.location}}</p>
-    <p><button (click)="onSnap()">{{buttonText}}</button> 🤌 {{faceSnap.snaps}}</p>
+    <p>
+        <button (click)="onSnap()">{{buttonText}}</button>
+        <!-- Ici, la valeur verte augmente avec la valeur du nombre de snaps -->
+        <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">🤌 {{ faceSnap.snaps }}</span>
+    </p>
 </div>
