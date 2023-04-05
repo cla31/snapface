@@ -1,4 +1,33 @@
 <div class="face-snap-card" [ngClass]="{ snapped: buttonText === 'Oops, unSnap!' }">
+    <!-- Formatage des chiffres -->
+    <!-- On écrit en interpolation sinon c lu comme une chaîne de caracères -->
+    <p>{{ 4346234.36 }}</p>
+    <!-- Renvoie le même nombre mais avec une vraie virgule -->
+    <p>{{ 4346234.36 | number }}</p>
+    <!-- Pour arrondir avec l'entier le plus proche -->
+    <p>{{ 4346234.36 | number: '1.0-0' }}</p>
+    <!-- Arrondi avec un chiffre après la virgule -->
+    <p>{{ 4346234.36 | number: '1.0-1' }}</p>
+    <!-- Les pourcentages -->
+    <p>{{ 0.336 | percent }}</p>
+    <!-- PercentPipe arrondit par défaut les pourcentages à l'entier le plus proche -->
+    <p>{{ 0.336 | percent: '1.0-1' }}</p>
+    <!-- Quand les nombres dans votre application
+     correspondent à des montants d'argent, 
+     CurrencyPipe facilite leur affichage. 
+     Si vous utilisez l'affichage par défaut :  -->
+    <p>{{ 344.36 | currency }}</p>
+    <!-- Angular présume par défaut que vous parlez de dollars, 
+    et donc affiche votre montant en dollars 
+    selon les règles de la locale de l'application. 
+    Vous pouvez configurer la monnaie à afficher : -->
+    <p>{{ 344.36 | currency: 'EUR' }}</p>
+    <!-- Vous pouvez passer un deuxième argument 
+    qui permet d'afficher le code de la monnaie 
+    plutôt que son symbole. Pour passer un deuxième 
+    argument à un pipe, on remet un deux-points  :  et 
+    on passe le deuxième argument : -->
+    <p>{{ 344.36 | currency: 'EUR' : 'code' }}</p>
     <!-- <h2>{{faceSnap.title}}</h2> -->
     <!-- Pour formater le titre en majuscules -->
     <h2>{{ faceSnap.title | uppercase }}</h2>
