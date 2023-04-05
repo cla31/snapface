@@ -2,7 +2,12 @@
     <!-- <h2>{{faceSnap.title}}</h2> -->
     <!-- Pour formater le titre en majuscules -->
     <h2>{{ faceSnap.title | uppercase }}</h2>
-    <p>Mis en ligne le {{faceSnap.createdDate}}</p>
+    <!-- <p>Mis en ligne le {{faceSnap.createdDate}}</p> -->
+    <!-- Formatage des dates -->
+    <!-- <p>Mis en ligne le {{ faceSnap.createdDate | date }}</p> -->
+    <!-- <p>Mis en ligne le {{ faceSnap.createdDate | date: 'longDate' }}</p> -->
+    <p>Mis en ligne {{ faceSnap.createdDate | date: 'à HH:mm, le d MMMM yyyy' }}</p>
+    <p>Mis en ligne le {{ faceSnap.createdDate | date: 'dd/MM/yy, à HH:mm' }}</p>
     <!-- Liaison par attribut pour afficher les images de manière dynamique -->
     <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
     <p>{{faceSnap.description}}</p>
