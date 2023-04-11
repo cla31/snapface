@@ -29,6 +29,5 @@ else{
   this.buttonText='Oh Snap!!';
 }
 }
-//Ecrire d'autres snaps!!! (cf fin dernière vidéo!!!)
 
 }
