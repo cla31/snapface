@@ -54,21 +54,54 @@ export class FaceSnapsService {
     getAllFaceSnaps(): FaceSnap[] {
         return this.getAllFaceSnaps();
     }
-    snapFaceSnapById(faceSnapId: number): void {
+
+    // Cette méthode retourne un FaceSnap si 
+    // elle le trouve (d'où son type de retour), 
+    // et  throw  une erreur sinon.
+
+    getFaceSnapById(faceSnapId: number): FaceSnap {
         const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
-        if (faceSnap) {
-            faceSnap.snaps++;
-        } else {
+        if (!faceSnap) {
             throw new Error('FaceSnap not found!');
+        } else {
+            return faceSnap;
         }
+      }
+    // snapFaceSnapById(faceSnapId: number): void {
+    //     const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
+    //     if (faceSnap) {
+    //         faceSnap.snaps++;
+    //     } else {
+    //         throw new Error('FaceSnap not found!');
+    //     }
+    // }
+
+    // unsnapFaceSnapById(faceSnapId: number): void {
+    //     const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
+    //     if (faceSnap) {
+    //         faceSnap.snaps--;
+    //     } else {
+    //         throw new Error('FaceSnap not found!');
+    //     }
+    // }
+    // Maintenant la partie fun : vous allez modifier l'empreinte 
+    // de  snapFaceSnapById()  pour qu'elle accepte un deuxième 
+    // argument qui permettra de choisir le  snapType  – un snap, ou un unsnap.
+    // Voici une première idée :
+    // snapFaceSnapById(faceSnapId: number, snapType: string): void {
+    //     const faceSnap = this.getFaceSnapById(faceSnapId);
+    //     snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--;
+    // }
+    //Ninja typescript
+    // Cette méthode utilise  getFaceSnapById()  pour récupérer le FaceSnap, 
+    // et si le deuxième argument est  'snap', rajoute un snap ; sinon, elle enlève un snap.
+    // Cependant, on pourrait passer n'importe quelle chaîne de caractères à cette méthode. 
+    // Afin de limiter les possibilités à des options sémantiques, 
+    // on peut remplacer le type  string  par un literal type :
+    snapFaceSnapById(faceSnapId: number, snapType: 'snap' | 'unsnap'): void {
+        const faceSnap = this.getFaceSnapById(faceSnapId);
+        snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--;
     }
 
-    unsnapFaceSnapById(faceSnapId: number): void {
-        const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
-        if (faceSnap) {
-            faceSnap.snaps--;
-        } else {
-            throw new Error('FaceSnap not found!');
-        }
-    }
+
 }

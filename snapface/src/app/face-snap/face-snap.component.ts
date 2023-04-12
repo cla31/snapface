@@ -20,15 +20,30 @@ ngOnInit(){
 this.buttonText='Oh Snap!!';
 }
 
-onSnap(){
+// onSnap(){
+//   if (this.buttonText === 'Oh Snap!') {
+//       this.faceSnapsService.snapFaceSnapById(this.faceSnap.id);
+//       this.buttonText = 'Oops, unSnap!';
+//     } else {
+//       this.faceSnapsService.unsnapFaceSnapById(this.faceSnap.id);
+//       this.buttonText = 'Oh Snap!';
+//     }
+//   }
+
+// Avec ça, dans FaceSnapComponent, l'implémentation du ninja typescript:
+onSnap() {
   if (this.buttonText === 'Oh Snap!') {
-      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id);
+    // Ainsi, grâce au ninja typescript, vous ne pourrez passer que 'snap' ou 'unsnap' 
+    // comme deuxième argument. Non seulement votre IDE 
+    // vous préviendra si vous essayez de passer autre chose, mais
+    // l'autocomplétion et la documentation automatique faciliteront l'utilisation de cette méthode :
+      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap');
       this.buttonText = 'Oops, unSnap!';
-    } else {
-      this.faceSnapsService.unsnapFaceSnapById(this.faceSnap.id);
+  } else {
+      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
       this.buttonText = 'Oh Snap!';
-    }
   }
+}
 }
 
 
