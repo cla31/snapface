@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FaceSnap } from '../models/face-snap.model';
 // Un service est une classe, 
 // et la façon la plus simple de déclarer 
 // une classe comme étant un service est 
