@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FaceSnap } from '../models/face-snap.model';
+import { FaceSnapsService } from '../services/face-snaps.service';
 @Component({
   selector: 'app-face-snap',
   templateUrl: './face-snap.component.html',
@@ -13,21 +14,21 @@ export class FaceSnapComponent implements OnInit {
   @Input()faceSnap!:FaceSnap;
   buttonText!:string;
 
+
+constructor(private faceSnapsService: FaceSnapsService) {}
 ngOnInit(){
 this.buttonText='Oh Snap!!';
 }
 
 onSnap(){
-if(this.buttonText==='Oh Snap!!'){
-  //L'utilisateur n'a pas encore cliqué sur le bouton
-  this.faceSnap.snaps++;
-  this.buttonText='Oops, unSnap!';
-}
-else{
-  // Si on est déjà sur unSnap
-  this.faceSnap.snaps--;
-  this.buttonText='Oh Snap!!';
-}
+  if (this.buttonText === 'Oh Snap!') {
+      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id);
+      this.buttonText = 'Oops, unSnap!';
+    } else {
+      this.faceSnapsService.unsnapFaceSnapById(this.faceSnap.id);
+      this.buttonText = 'Oh Snap!';
+    }
+  }
 }
 
-}
+

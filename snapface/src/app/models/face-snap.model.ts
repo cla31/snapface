@@ -1,4 +1,5 @@
 export class FaceSnap{
+    id!: number;
     //La classe en plus simple
     title!:string;
     description!:string;
